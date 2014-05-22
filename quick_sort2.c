@@ -69,6 +69,9 @@ quick_sort( int *arr, size_t low, size_t high)
 	part_index = select_index( arr, low, high);
 	swap( arr+low, arr+part_index);
 
+	/*
+	 * 循环通过交换移动比key大和比key小的元素，确定key的位置
+	 */
 	part_index = low;
 	for ( i = low+1; i <= high; i++) {
 		if ( arr[i] < arr[low] ) {
