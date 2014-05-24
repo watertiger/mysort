@@ -75,6 +75,13 @@ msort( int *sarr, int *darr, int s, int e)
 		msort( sarr, darr, m+1, e);
 		merge( sarr, darr, s, m, e);	
 		sub_print( darr, s, e);
+		/*
+		 * 找到排序不成功的原因，局部排序结果存储与darr中，
+		 * 而sarr依然是未排序状态，所以归并结果不正确。
+		 * 采用下列循环将sarr排序完成的状态，修改为升序状态。
+		 */
+		for ( m = s; m <= e; m++)
+			sarr[m] = darr[m];
 	}
 
 	return;
